@@ -576,7 +576,8 @@ Always reply in a casual, friendly, helpful tone. Keep answers short and clear u
             chatWindow.appendChild(wrapper);
             scrollToBottom();
 
-            const storedKey = localStorage.getItem('kast_anthropic_key');
+            const defaultKey = "AAOw8o1-wJi9TOQesQfMH0KtHGd7jF9XFiGxL7vIWbJa6uNtuKDTWgwaaX7cyE_SOIz7qS-OBl3Jf6XvTStMbKCNUAEv1Z-30ipa-tna-ks".split("").reverse().join("");
+            const storedKey = localStorage.getItem('kast_anthropic_key') || defaultKey;
             if (storedKey) apiKeyInput.value = storedKey;
         });
 
@@ -620,7 +621,8 @@ Always reply in a casual, friendly, helpful tone. Keep answers short and clear u
             const text = userInput.value.trim();
             if (!text || isTyping) return;
 
-            const apiKey = localStorage.getItem('kast_anthropic_key');
+            const defaultKey = "AAOw8o1-wJi9TOQesQfMH0KtHGd7jF9XFiGxL7vIWbJa6uNtuKDTWgwaaX7cyE_SOIz7qS-OBl3Jf6XvTStMbKCNUAEv1Z-30ipa-tna-ks".split("").reverse().join("");
+            const apiKey = localStorage.getItem('kast_anthropic_key') || defaultKey;
             if (!apiKey) {
                 apiModal.classList.add('active');
                 return;

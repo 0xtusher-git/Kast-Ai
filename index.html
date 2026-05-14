@@ -646,10 +646,10 @@ Always reply in a casual, friendly, helpful tone. Keep answers short and clear u
                         'Content-Type': 'application/json',
                         'x-api-key': apiKey,
                         'anthropic-version': '2023-06-01',
-                        'dangerously-allow-browser': 'true'
+                        'anthropic-dangerously-allow-browser': 'true'
                     },
                     body: JSON.stringify({
-                        model: 'claude-sonnet-4-20250514',
+                        model: 'claude-3-5-sonnet-20241022',
                         max_tokens: 1000,
                         system: SYSTEM_PROMPT,
                         messages: conversationHistory

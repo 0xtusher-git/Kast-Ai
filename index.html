@@ -641,20 +641,22 @@ Always reply in a casual, friendly, helpful tone. Keep answers short and clear u
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        model: 'claude-3-5-sonnet-20241022',
+                        model: 'claude-sonnet-4-20250514',
                         max_tokens: 1000,
                         system: SYSTEM_PROMPT,
                         messages: conversationHistory
                     })
                 });
 
-                if (!response.ok) {
-                    const err = await response.json();
-                    throw new Error(err.error?.message || 'API Error');
+                const data = await response.json();
+
+                // Check for API errors first
+                if (data.error) {
+                  throw new Error(data.error.message || 'API error');
                 }
 
-                const data = await response.json();
-                const reply = data.content[0].text;
+                // Safely read the response
+                const reply = data?.content?.[0]?.text || 'Sorry, I could not get a response. Try again!';
                 
                 hideTyping();
                 addMessage(reply, 'ai');
